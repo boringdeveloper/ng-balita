@@ -9,9 +9,9 @@ import { Router, RouterEvent } from "@angular/router";
 export class MenuPage implements OnInit {
   public appPages = [
     {
-      title: "Home",
+      title: "All",
       url: "/menu/home",
-      icon: "home"
+      icon: "paper"
     }
   ];
 

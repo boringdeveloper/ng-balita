@@ -3,21 +3,35 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      Home
-    </ion-title>
+    <ion-title> </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-slides [options]="sliderConfig">
     <ion-slide *ngFor="let news of (news | async)">
-      <ion-card class="welcome-card">
+      <div class="news-container ion-no-margin" (click)="openBrowser(news.url)">
         <img *ngIf="news.urlToImage" src="{{ news.urlToImage }}" alt="" />
         <img *ngIf="!news.urlToImage" src="/assets/shapes.svg" alt="" />
         <ion-card-header>
-          <ion-card-subtitle>{{ news.source.name }}</ion-card-subtitle>
-          <ion-card-title class="ion-text-left"
+          <ion-grid class="ion-no-padding">
+            <ion-row>
+              <ion-col size="auto" class="ion-no-padding">
+                <ion-card-subtitle
+                  ><small>{{ news.source.name }}</small></ion-card-subtitle
+                >
+              </ion-col>
+              <ion-col class="ion-no-padding ion-text-right">
+                <ion-card-subtitle
+                  ><small
+                    >{{ getWhenPublished(news.publishedAt) }}</small
+                  ></ion-card-subtitle
+                >
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <ion-card-title class="ion-text-center"
             >{{ news.title }}</ion-card-title
           >
         </ion-card-header>
@@ -25,9 +39,7 @@
           <p *ngIf="news.content">{{ news.description }}</p>
           <p *ngIf="!news.content">Read More...</p>
         </ion-card-content>
-      </ion-card>
+      </div>
     </ion-slide>
   </ion-slides>
 </ion-content>
-
-<ion-footer> </ion-footer>

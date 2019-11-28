@@ -2,7 +2,7 @@
   <ion-menu type="overlay" contentID="content">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Menu</ion-title>
+        <ion-title>Categories</ion-title>
       </ion-toolbar>
     </ion-header>
 
@@ -20,12 +20,23 @@
             </ion-label>
           </ion-item>
         </ion-menu-toggle>
-
-        <!-- <ion-item tappable routerLink="/login" routerDirection="root">
-          <ion-icon name="log-out" slot="start"></ion-icon> Logout
-        </ion-item> -->
       </ion-list>
     </ion-content>
+
+    <div class="footer ion-text-center">
+      <ion-grid class="developedBy">
+        <ion-row>
+          <ion-col></ion-col>
+          <ion-col size="6">
+            <p class="ion-no-margin">DEVELOPED BY:</p>
+            <img
+              src="../../assets/img/banner_resize.jpg"
+              alt="Boring Apps Banner"
+          /></ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
   </ion-menu>
 
   <ion-router-outlet id="content" main></ion-router-outlet>

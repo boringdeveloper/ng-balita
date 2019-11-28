@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, from } from "rxjs";
 import { Category, NewsService } from "../services/news.service";
 import { AdMobFree, AdMobFreeBannerConfig } from "@ionic-native/admob-free/ngx";
+import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
+import * as moment from "moment";
 
 @Component({
   selector: "app-home",
@@ -20,7 +22,11 @@ export class HomePage implements OnInit {
     loop: true
   };
 
-  constructor(private newsService: NewsService, private admob: AdMobFree) {}
+  constructor(
+    private newsService: NewsService,
+    private admob: AdMobFree,
+    private iab: InAppBrowser
+  ) {}
 
   ngOnInit() {
     this.news = this.newsService.searchNews(this.category);
@@ -38,5 +44,13 @@ export class HomePage implements OnInit {
         // success
       })
       .catch(e => console.log(e));
+  }
+
+  openBrowser(url: string) {
+    this.iab.create(url);
+  }
+
+  getWhenPublished(datetime: string) {
+    return moment(datetime || moment.now()).fromNow();
   }
 }

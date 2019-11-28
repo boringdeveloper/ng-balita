@@ -1,3 +1,10 @@
 .active-item {
-    border-left: 8px solid var(--manibela-blue-dark);
+  border-left: 8px solid var(--ion-color-primary);
+}
+
+.developedBy {
+  p {
+    font-size: xx-small;
+    color: var(--ion-color-medium);
+  }
 }
