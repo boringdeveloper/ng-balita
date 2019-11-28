@@ -1,0 +1,7 @@
+{
+  "name": "ion-template-sidemenu",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

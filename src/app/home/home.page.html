@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides [options]="sliderConfig">
+    <ion-slide *ngFor="let news of (news | async)">
+      <ion-card class="welcome-card">
+        <img *ngIf="news.urlToImage" src="{{ news.urlToImage }}" alt="" />
+        <img *ngIf="!news.urlToImage" src="/assets/shapes.svg" alt="" />
+        <ion-card-header>
+          <ion-card-subtitle>{{ news.source.name }}</ion-card-subtitle>
+          <ion-card-title class="ion-text-left"
+            >{{ news.title }}</ion-card-title
+          >
+        </ion-card-header>
+        <ion-card-content class="ion-text-left">
+          <p *ngIf="news.content">{{ news.description }}</p>
+          <p *ngIf="!news.content">Read More...</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+
+<ion-footer> </ion-footer>
