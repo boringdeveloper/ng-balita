@@ -14,6 +14,11 @@ ion-slide,
   }
 
   ion-card-title {
-    color: var(--ion-color-primary);
+    color: var(--balita-blue-dark);
   }
+}
+
+ion-button {
+  --color: var(--balita-blue-dark);
+  --border-color: var(--balita-blue-dark);
 }

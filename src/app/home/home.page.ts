@@ -4,6 +4,7 @@ import { Category, NewsService } from "../services/news.service";
 import { AdMobFree, AdMobFreeBannerConfig } from "@ionic-native/admob-free/ngx";
 import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 import * as moment from "moment";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-home",
@@ -17,7 +18,7 @@ export class HomePage implements OnInit {
   sliderConfig = {
     zoom: false,
     centeredSlides: true,
-    initialSlide: 1,
+    initialSlide: 0,
     // autoHeight: true,
     loop: true
   };
@@ -25,11 +26,16 @@ export class HomePage implements OnInit {
   constructor(
     private newsService: NewsService,
     private admob: AdMobFree,
-    private iab: InAppBrowser
+    private iab: InAppBrowser,
+    private router: Router
   ) {}
 
   ngOnInit() {
-    this.news = this.newsService.searchNews(this.category);
+    let route = this.router.url.split("/");
+    // this.category = route[3]
+
+    console.log("route", route[3]);
+    this.news = this.newsService.searchNews(route[3]);
 
     let bannerConfig: AdMobFreeBannerConfig = {
       autoShow: true,

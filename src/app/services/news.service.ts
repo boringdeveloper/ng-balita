@@ -18,12 +18,13 @@ export enum Category {
   providedIn: "root"
 })
 export class NewsService {
-  url = "https://newsapi.org/v2/top-headlines?country=ph"; // "&category=business&apiKey=0baa482bc74f442ebca9ab4ea00fb3df"
+  url = "https://newsapi.org/v2/top-headlines?country=ph";
   apiKey = "0baa482bc74f442ebca9ab4ea00fb3df";
 
   constructor(private http: HttpClient) {}
 
-  searchNews(category: Category): Observable<any> {
+  searchNews(category: string): Observable<any> {
+    category = category == "all" ? "" : category;
     return this.http
       .get(`${this.url}&category=${category}&apiKey=${this.apiKey}`)
       .pipe(

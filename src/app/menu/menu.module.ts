@@ -13,7 +13,35 @@ const routes: Routes = [
     component: MenuPage,
     children: [
       {
-        path: "home",
+        path: "news/all",
+        loadChildren: "../home/home.module#HomePageModule"
+      },
+      {
+        path: "news/business",
+        loadChildren: "../home/home.module#HomePageModule"
+      },
+      {
+        path: "news/entertainment",
+        loadChildren: "../home/home.module#HomePageModule"
+      },
+      {
+        path: "news/general",
+        loadChildren: "../home/home.module#HomePageModule"
+      },
+      {
+        path: "news/health",
+        loadChildren: "../home/home.module#HomePageModule"
+      },
+      {
+        path: "news/science",
+        loadChildren: "../home/home.module#HomePageModule"
+      },
+      {
+        path: "news/sports",
+        loadChildren: "../home/home.module#HomePageModule"
+      },
+      {
+        path: "news/technology",
         loadChildren: "../home/home.module#HomePageModule"
       }
     ]

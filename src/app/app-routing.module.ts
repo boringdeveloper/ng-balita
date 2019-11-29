@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "menu/home",
+    redirectTo: "menu/news/all",
     pathMatch: "full"
   },
   { path: "menu", loadChildren: "./menu/menu.module#MenuPageModule" }
