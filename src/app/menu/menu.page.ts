@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, RouterEvent } from "@angular/router";
+import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 
 @Component({
   selector: "app-menu",
@@ -9,7 +10,7 @@ import { Router, RouterEvent } from "@angular/router";
 export class MenuPage implements OnInit {
   public appPages = [
     {
-      title: "All",
+      title: "Headlines",
       url: "/menu/news/all",
       icon: "paper"
     },
@@ -52,7 +53,7 @@ export class MenuPage implements OnInit {
 
   selectedPath = "";
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private iab: InAppBrowser) {
     this.router.events.subscribe((event: RouterEvent) => {
       if (event && event.url) {
         this.selectedPath = event.url;
@@ -61,4 +62,8 @@ export class MenuPage implements OnInit {
   }
 
   ngOnInit() {}
+
+  goToNewsApi() {
+    this.iab.create("https://newsapi.org/");
+  }
 }

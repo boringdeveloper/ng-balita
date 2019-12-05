@@ -3,9 +3,6 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-button slot="end" fill="outline" class="ion-margin-end">
-      <ion-icon name="help"></ion-icon>
-    </ion-button>
     <ion-title> </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,8 +11,10 @@
   <ion-slides [options]="sliderConfig">
     <ion-slide *ngFor="let news of (news | async)">
       <div class="news-container ion-no-margin" (click)="openBrowser(news.url)">
-        <img *ngIf="news.urlToImage" src="{{ news.urlToImage }}" alt="" />
-        <img *ngIf="!news.urlToImage" src="/assets/shapes.svg" alt="" />
+        <div class="image-container">
+          <img *ngIf="news.urlToImage" src="{{ news.urlToImage }}" alt="" />
+          <img *ngIf="!news.urlToImage" src="../../assets/missing.png" alt="" />
+        </div>
         <ion-card-header>
           <ion-grid class="ion-no-padding">
             <ion-row>
@@ -38,11 +37,22 @@
             >{{ news.title }}</ion-card-title
           >
         </ion-card-header>
-        <ion-card-content class="ion-text-left">
-          <p *ngIf="news.content">{{ news.description }}</p>
-          <p *ngIf="!news.content">Read More...</p>
+        <ion-card-content class="news-description ion-text-left">
+          <p>
+            {{ news.description }}
+            <small><span>(tap anywhere to read more)</span></small>
+          </p>
         </ion-card-content>
       </div>
     </ion-slide>
   </ion-slides>
 </ion-content>
+
+<div class="footer ion-text-center ion-padding">
+  <ion-text
+    ><small
+      ><span><<</span> << <span><<</span> swipe to change article
+      <span>>></span> >> <span>>></span></small
+    ></ion-text
+  >
+</div>

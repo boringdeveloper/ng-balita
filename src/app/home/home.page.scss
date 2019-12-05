@@ -8,9 +8,15 @@ ion-slide,
 .news-container {
   height: 100% !important;
 
-  img {
+  .image-container {
     height: 40%;
     width: 100%;
+
+    img {
+      overflow: hidden;
+      height: 100%;
+      width: auto;
+    }
   }
 
   ion-card-title {
@@ -18,7 +24,27 @@ ion-slide,
   }
 }
 
+.news-description {
+  span {
+    color: var(--balita-blue-light);
+    font-style: italic;
+    font-weight: bolder;
+  }
+}
+
 ion-button {
   --color: var(--balita-blue-dark);
   --border-color: var(--balita-blue-dark);
+}
+
+.footer {
+  ion-text {
+    color: var(--balita-blue-light);
+    font-style: italic;
+    font-weight: bolder;
+  }
+
+  span {
+    color: var(--ion-color-medium-shade);
+  }
 }

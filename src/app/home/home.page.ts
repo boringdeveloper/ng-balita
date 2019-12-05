@@ -32,7 +32,6 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     let route = this.router.url.split("/");
-    // this.category = route[3]
 
     console.log("route", route[3]);
     this.news = this.newsService.searchNews(route[3]);
